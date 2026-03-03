@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Article | CyberGuard Africa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="logo">CyberGuard <span>Africa</span></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="learn.html">Learn</a>
+      <a href="articles.html" class="active">Articles</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <section class="section" id="articleSection">
+    <div id="articleContainer" style="max-width:900px;margin:auto"></div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function getQueryParam(name) {
+      return new URLSearchParams(location.search).get(name);
+    }
+
+    async function loadArticle() {
+      const id = getQueryParam('id');
+      const container = document.getElementById('articleContainer');
+      if (!id) {
+        container.innerHTML = '<p style="color:#cfcfcf">Article id missing.</p>';
+        return;
+      }
+      try {
+        const res = await fetch('/api/articles/' + encodeURIComponent(id));
+        if (!res.ok) {
+          container.innerHTML = '<p style="color:#cfcfcf">Article not found.</p>';
+          return;
+        }
+        const a = await res.json();
+        container.innerHTML = `
+          <img src="${a.image||'images/article-placeholder.jpg'}" alt="${a.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:10px;margin-bottom:16px;">
+          <h1 style="color:#00eaff">${a.title}</h1>
+          <p style="color:#9aa8b3">By ${a.author} • ${new Date(a.publishedAt).toLocaleDateString()}</p>
+          <div style="margin-top:20px;color:#dcdcdc;line-height:1.8">${a.content}</div>
+        `;
+      } catch (e) {
+        console.error(e);
+        container.innerHTML = '<p style="color:#cfcfcf">Error loading article.</p>';
+      }
+    }
+
+    loadArticle();
+  </script>
+</body>
+</html>

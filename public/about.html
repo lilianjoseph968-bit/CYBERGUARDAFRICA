@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | CyberGuard Africa</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== Navigation Bar (same as homepage) ===== -->
+  <header>
+    <div class="navbar">
+      <div class="logo">CyberGuard <span>Africa</span></div>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== About Section ===== -->
+  <section class="about">
+    <div class="container">
+
+      <div class="about-header">
+        <img src="images/logo.png" alt="CyberGuard Africa Logo">
+        <h1>About CyberGuard Africa</h1>
+      </div>
+
+      <div class="about-content">
+        <p>
+          <strong>CyberGuard Africa</strong> is a youth-led digital safety initiative founded to empower Africans through cybersecurity education, awareness, and innovation. The project aims to create a generation of informed and responsible internet users who can protect themselves and others in the online world.
+        </p>
+
+        <p>
+          Established by a passionate young visionary, CyberGuard Africa focuses on bridging the gap between technology and safety — especially among students and young professionals. Through campaigns, online learning, and mentorship, the initiative seeks to build a culture of cyber awareness across African communities.
+        </p>
+
+        <div class="mission">
+          <h2>Our Mission</h2>
+          <p>
+            To empower African youth with cybersecurity knowledge and digital skills that enable them to stay safe, innovate responsibly, and lead in the global digital space.
+          </p>
+        </div>
+
+        <div class="goals">
+          <h2>Our Goals</h2>
+          <ul>
+            <li>Promote digital safety awareness in schools and communities.</li>
+            <li>Encourage young Africans to explore cybersecurity careers.</li>
+            <li>Provide free and accessible cyber education resources.</li>
+            <li>Collaborate with partners to fight online scams and fraud.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Script for Menu Toggle ===== -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
+a
